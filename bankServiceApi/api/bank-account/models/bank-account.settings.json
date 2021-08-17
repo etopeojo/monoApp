@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bank_accounts",
+  "info": {
+    "name": "Bank Account"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "accountNo": {
+      "type": "string"
+    },
+    "customerId": {
+      "type": "string"
+    },
+    "balance": {
+      "type": "float"
+    }
+  }
+}
