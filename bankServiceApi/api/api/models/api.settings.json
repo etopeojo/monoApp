@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "apis",
+  "info": {
+    "name": "api"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "default": {
+      "type": "string"
+    }
+  }
+}

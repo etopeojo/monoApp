@@ -543,6 +543,9 @@
           },
           "balance": {
             "type": "number"
+          },
+          "accountType": {
+            "type": "string"
           }
         }
       },
@@ -556,6 +559,9 @@
           },
           "balance": {
             "type": "number"
+          },
+          "accountType": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

@@ -1,0 +1,36 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/apis/getAccountTypes",
+      "handler": "api.getAccountTypes",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/apis/queryAccountNo/:accountNo",
+      "handler": "api.queryAccountNo",
+      "config": {
+        "policies": ["queryAccountNoValidation"]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/apis/newCustomerSignup",
+      "handler": "api.newCustomerSignup",
+      "config": {
+        "policies": ["customerSignupValidation"]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/apis/openAdditionalAccount",
+      "handler": "api.openAdditionalAccount",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
