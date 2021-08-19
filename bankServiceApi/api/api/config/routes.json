@@ -29,7 +29,7 @@
       "path": "/apis/openAdditionalAccount",
       "handler": "api.openAdditionalAccount",
       "config": {
-        "policies": []
+        "policies": ["openAdditionalAccountValidation"]
       }
     }
   ]

@@ -36,6 +36,57 @@ async function customerSignupValidate(data) {
   return schema.validateAsync({ ...data });
 }
 
+async function openAdditionalValidate(data) {
+  const schema = joi.object({
+    email: joi
+      .string()
+      .email()
+      .required()
+      .trim()
+      .external(async (email) => {
+        let customerExist = await strapi.services[
+          CUSTOMER_SERVICE
+        ].findCustomerByEmail(email);
+
+        if (customerExist.ok) {
+          return email;
+        } else {
+          throw new Error(`The customer (${email}) does not exist`);
+        }
+      }),
+    accountType: joi
+      .string()
+      .required()
+      .valid(
+        ...Object.values(strapi.services[BANK_ACCOUNT_SERVICE].ACCOUNT_TYPES)
+      )
+      .external(async (type) => {
+        let customer = await strapi.services[
+          CUSTOMER_SERVICE
+        ].findCustomerByEmail(data.email);
+        let totalAccountDetails = await strapi.services[
+          BANK_ACCOUNT_SERVICE
+        ].getTotalAccountsCustomerOwns(customer.data.id);
+
+        if (totalAccountDetails.totalAccounts === 4) {
+          throw new Error("Customer cannot own more than 4 accounts");
+        }
+
+        for (let account of totalAccountDetails.accounts) {
+          if (type === account.accountType) {
+            throw new Error(
+              `Customer already has an account of type '${type}'`
+            );
+          }
+        }
+
+        return type;
+      }),
+  });
+
+  return schema.validateAsync({ ...data });
+}
+
 async function queryAccountNoValidate(data) {
   const schema = joi.object({
     accountNo: joi
@@ -58,4 +109,8 @@ async function queryAccountNoValidate(data) {
   return schema.validateAsync({ ...data });
 }
 
-module.exports = { customerSignupValidate, queryAccountNoValidate };
+module.exports = {
+  customerSignupValidate,
+  queryAccountNoValidate,
+  openAdditionalValidate,
+};
