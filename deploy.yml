@@ -16,4 +16,4 @@ jobs:
           passphrase: ${{ secrets.SSH_KEY_PASS }}
           
           script: |
-                echo 'Deployment successful to digital ocean' 
+                echo 'Deployment successful to digital ocean..Checking out' 
