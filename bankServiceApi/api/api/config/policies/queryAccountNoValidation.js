@@ -13,7 +13,7 @@ module.exports = async (ctx, next) => {
   delete ctx.params["0"];
   console.log(`Request:`, ctx.params);
   try {
-    let validation = await queryAccountNoValidate(ctx.params);
+    await queryAccountNoValidate(ctx.params);
   } catch (error) {
     if (error.details) {
       console.error(error.details);

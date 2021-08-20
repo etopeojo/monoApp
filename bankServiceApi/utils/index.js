@@ -31,8 +31,13 @@ function generateRESTResponse(status, message, body = {}) {
 
   return response;
 }
+
+function generateRandomNumbers(numberlength = 12) {
+  return customAlphabet("0123456789", numberlength)();
+}
 module.exports = {
   generateAccountNumber,
   createPasswordHash,
   generateRESTResponse,
+  generateRandomNumbers,
 };

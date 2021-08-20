@@ -1,18 +1,18 @@
 "use strict";
 
 /**
- * `customerSignupValidation` policy.
+ * `makeDepositValidation` policy.
  */
 
-const { customerSignupValidate } = require("../../../../utils/validator");
+const { makeDepositValidate } = require("../../../../utils/validator");
 
 module.exports = async (ctx, next) => {
   // Add your own logic here.
-  console.log("In customerSignupValidate policy.");
+  console.log("In makeDepositValidate policy.");
 
   console.log(`Request:`, ctx.request.body);
   try {
-    await customerSignupValidate(ctx.request.body);
+    await makeDepositValidate(ctx.request.body);
   } catch (error) {
     if (error.details) {
       console.error(error.details);

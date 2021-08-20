@@ -541,10 +541,10 @@
           "customerId": {
             "type": "string"
           },
-          "balance": {
-            "type": "number"
-          },
           "accountType": {
+            "type": "string"
+          },
+          "balance": {
             "type": "string"
           }
         }
@@ -557,10 +557,10 @@
           "customerId": {
             "type": "string"
           },
-          "balance": {
-            "type": "number"
-          },
           "accountType": {
+            "type": "string"
+          },
+          "balance": {
             "type": "string"
           },
           "created_by": {

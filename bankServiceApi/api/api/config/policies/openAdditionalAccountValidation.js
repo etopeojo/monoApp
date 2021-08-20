@@ -12,7 +12,7 @@ module.exports = async (ctx, next) => {
 
   console.log(`Request:`, ctx.request.body);
   try {
-    let validation = await openAdditionalValidate(ctx.request.body);
+    await openAdditionalValidate(ctx.request.body);
   } catch (error) {
     if (error.details) {
       console.error(error.details);

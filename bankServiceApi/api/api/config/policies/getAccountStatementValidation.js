@@ -1,18 +1,19 @@
 "use strict";
 
 /**
- * `customerSignupValidation` policy.
+ * `getAccountStatementValidation` policy.
  */
 
-const { customerSignupValidate } = require("../../../../utils/validator");
+const { getAccountStatementValidate } = require("../../../../utils/validator");
 
 module.exports = async (ctx, next) => {
   // Add your own logic here.
-  console.log("In customerSignupValidate policy.");
+  console.log("In getAccountStatement policy.");
 
-  console.log(`Request:`, ctx.request.body);
+  delete ctx.params["0"];
+  console.log(`Request:`, ctx.params);
   try {
-    await customerSignupValidate(ctx.request.body);
+    await getAccountStatementValidate(ctx.params);
   } catch (error) {
     if (error.details) {
       console.error(error.details);

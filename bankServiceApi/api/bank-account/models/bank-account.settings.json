@@ -18,10 +18,10 @@
     "customerId": {
       "type": "string"
     },
-    "balance": {
-      "type": "float"
-    },
     "accountType": {
+      "type": "string"
+    },
+    "balance": {
       "type": "string"
     }
   }
