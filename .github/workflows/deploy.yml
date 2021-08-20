@@ -30,4 +30,4 @@ jobs:
                 ln -sfn ~/env/.env ./.env
                 npm install
                 pm2 startOrRestart ecosystem.config.js
-                echo 'Deployment successful'
+                echo 'Deployment successful.'
