@@ -19,4 +19,13 @@ jobs:
                 echo 'Starting CI/CD'
                 cd ~
                 git clone https://github.com/etopeojo/monoApp.git
-                ls
+                cd webSocketServer
+                npm install
+                cd bin
+                pm2 startOrRestart www.js
+                cd ../../
+                cd bankServiceApi
+                ln -sfn ~/env/.env ./.env
+                npm install
+                pm2 startOrRestart ecosystem.config.js
+                echo 'Deployment successful'
