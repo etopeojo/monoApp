@@ -16,4 +16,7 @@ jobs:
           passphrase: ${{ secrets.SSH_KEY_PASS }}
           
           script: |
-                echo 'Deployment successful to digital ocean..Checking out'
+                echo 'Starting CI/CD'
+                cd ~
+                git clone https://github.com/etopeojo/monoApp.git
+                ls
