@@ -18,6 +18,7 @@ jobs:
           script: |
                 echo 'Starting CI/CD'
                 cd ~
+                rm -rf monoApp
                 git clone https://github.com/etopeojo/monoApp.git
                 cd webSocketServer
                 npm install
