@@ -16,7 +16,6 @@ const TRANSACTION_LOGS_SERVICE = "transaction-logs";
 
 async function serveBankApp(ctx) {
   let filePath = path.resolve(__dirname, "../../../views/index.html");
-  console.log(filePath);
   let mimetype = "text/html";
 
   ctx.body = fs.createReadStream(filePath);

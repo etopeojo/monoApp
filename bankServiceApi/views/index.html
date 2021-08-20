@@ -7,7 +7,102 @@
     <title>Mono.co Banking Service</title>
   </head>
   <body>
-    <h1>Welcome to Mono!</h1>
-    <h2>I am working</h2>
+    <h1>Welcome to Mono Banking Service</h1>
+    <p>Register to join the league of <strong>Trailblazers:</strong></p>
+
+    <form id="myForm">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" />
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" />
+
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" />
+
+      <br />
+      <label for="accountType">AccountType:</label>
+      <input type="radio" id="savings" name="accountType" value="savings" />
+      <label for="savings">Savings</label>
+
+      <input type="radio" id="current" name="accountType" value="current" />
+      <label for="current">Current</label>
+
+      <input
+        type="radio"
+        id="flexi-savings"
+        name="accountType"
+        value="flexi-savings"
+      />
+      <label for="flexi-savings">Flexi-Savings</label>
+
+      <input
+        type="radio"
+        id="super-investors"
+        name="accountType"
+        value="super-investors"
+      />
+      <label for="super-investors">super-investors</label>
+
+      <br />
+      <br />
+      <input type="submit" value="SUBMIT" />
+      <input type="button" value="TOGGLE ERROR" id="errorToggle" />
+         
+    </form>
   </body>
+
+  <script
+    src="https://cdn.socket.io/4.1.2/socket.io.min.js"
+    integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg"
+    crossorigin="anonymous"
+  ></script>
+
+  <script type="module">
+    const socket = io("http://127.0.0.1:3000");
+    socket.on("lifeBeat", (data) => {
+      console.log(data);
+    });
+    socket.on("event.interactionAck", (data) => {
+      alert(data);
+    });
+    socket.on("event.errorAck", (data) => {
+      alert(data);
+    });
+
+    document.getElementById("myForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // Stop form from submitting
+
+      let formEl = document.forms.myForm;
+      let formData = new FormData(formEl);
+      let details = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        password: formData.get("password"),
+        accountType: formData.get("accountType"),
+      };
+
+      socket.emit("event.interaction", details);
+    });
+
+    document
+      .getElementById("errorToggle")
+      .addEventListener("click", function (e) {
+        e.preventDefault(); // Stop form from submitting
+
+        socket.emit("event.error", getRandomString(15));
+      });
+
+    function getRandomString(length) {
+      let randomChars =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let result = "";
+      for (let i = 0; i < length; i++) {
+        result += randomChars.charAt(
+          Math.floor(Math.random() * randomChars.length)
+        );
+      }
+      return result;
+    }
+  </script>
 </html>
