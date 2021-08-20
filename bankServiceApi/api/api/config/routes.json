@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/apis/serveBankApp",
+      "handler": "api.serveBankApp",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/apis/getAccountTypes",
       "handler": "api.getAccountTypes",
       "config": {

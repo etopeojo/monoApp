@@ -6,9 +6,24 @@
  */
 
 const { generateRESTResponse } = require("../../../utils");
+const fs = require("fs");
+const fsPromises = fs.promises;
+const path = require("path");
+
 const ACCOUNT_SERVICE = "bank-account";
 const CUSTOMER_SERVICE = "customer";
 const TRANSACTION_LOGS_SERVICE = "transaction-logs";
+
+async function serveBankApp(ctx) {
+  let filePath = path.resolve(__dirname, "../../../views/index.html");
+  console.log(filePath);
+  let mimetype = "text/html";
+
+  ctx.body = fs.createReadStream(filePath);
+  // ctx.attachment(fileName);
+  ctx.set("Content-type", mimetype);
+  return ctx.response;
+}
 
 async function newCustomerSignup(ctx) {
   let { email, name, password, accountType } = ctx.request.body;
@@ -184,4 +199,5 @@ module.exports = {
   makeDeposit,
   makeTransfer,
   getAccountStatement,
+  serveBankApp,
 };
