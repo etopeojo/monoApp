@@ -1,2 +1,2 @@
-{"account":"meme"}
-{"account":"meme","seee me":"I can see"}
+{"name":"","email":"","password":"","accountType":null}
+{"name":"Emmanuel Tope-Ojo","email":"etopeojo@gmail.com","password":"Godschosen#2224AUS","accountType":"savings"}
