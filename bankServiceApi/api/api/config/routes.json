@@ -5,7 +5,7 @@
       "path": "/apis/getAccountTypes",
       "handler": "api.getAccountTypes",
       "config": {
-        "policies": []
+        "policies": ["global::rateLimiter"]
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/apis/queryAccountNo/:accountNo",
       "handler": "api.queryAccountNo",
       "config": {
-        "policies": ["queryAccountNoValidation"]
+        "policies": ["queryAccountNoValidation", "global::rateLimiter"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/apis/getAccountBalance/:accountNo",
       "handler": "api.getAccountBalance",
       "config": {
-        "policies": ["getAccountBalanceValidation"]
+        "policies": ["getAccountBalanceValidation", "global::rateLimiter"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/apis/getAccountStatement/:accountNo",
       "handler": "api.getAccountStatement",
       "config": {
-        "policies": ["getAccountStatementValidation"]
+        "policies": ["getAccountStatementValidation", "global::rateLimiter"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/apis/newCustomerSignup",
       "handler": "api.newCustomerSignup",
       "config": {
-        "policies": ["customerSignupValidation"]
+        "policies": ["customerSignupValidation", "global::rateLimiter"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/apis/openAdditionalAccount",
       "handler": "api.openAdditionalAccount",
       "config": {
-        "policies": ["openAdditionalAccountValidation"]
+        "policies": ["openAdditionalAccountValidation", "global::rateLimiter"]
       }
     },
     {
@@ -53,7 +53,7 @@
       "path": "/apis/makeDeposit",
       "handler": "api.makeDeposit",
       "config": {
-        "policies": ["makeDepositValidation"]
+        "policies": ["makeDepositValidation", "global::rateLimiter"]
       }
     },
     {
@@ -61,7 +61,7 @@
       "path": "/apis/makeTransfer",
       "handler": "api.makeTransfer",
       "config": {
-        "policies": ["makeTransferValidation"]
+        "policies": ["makeTransferValidation", "global::rateLimiter"]
       }
     }
   ]
