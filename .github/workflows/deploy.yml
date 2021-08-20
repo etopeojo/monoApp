@@ -24,9 +24,8 @@ jobs:
                 cd monoApp/
                 cd webSocketServer/
                 npm install
-                cd bin
-                pm2 startOrRestart www.js
-                cd ../../
+                pm2 startOrRestart ecosystem.config.js
+                cd ../
                 cd bankServiceApi
                 ln -sfn ~/env/.env ./.env
                 npm install
