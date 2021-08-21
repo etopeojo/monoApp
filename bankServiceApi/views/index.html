@@ -7,6 +7,16 @@
     <title>Mono.co Banking Service</title>
   </head>
   <body>
+    <form id="envForm">
+      <label for="accountType">Choose ENV:</label>
+      <input type="radio" id="local" name="env" value="local" />
+      <label for="local">Local</label>
+
+      <input type="radio" id="server" name="env" value="server" />
+      <label for="server">Server</label>
+      <input type="submit" value="Enter" />
+    </form>
+    <br />
     <h1>Welcome to Mono Banking Service</h1>
     <p>Register to join the league of <strong>Trailblazers:</strong></p>
 
@@ -48,6 +58,7 @@
       <br />
       <input type="submit" value="SUBMIT" />
       <input type="button" value="TOGGLE ERROR" id="errorToggle" />
+
          
     </form>
   </body>
@@ -59,7 +70,24 @@
   ></script>
 
   <script type="module">
-    const socket = io("http://127.0.0.1:3000");
+    let envChosen = "";
+    document.getElementById("envForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // Stop form from submitting
+
+      let formEnv = document.forms.envForm;
+      let formDataEnv = new FormData(formEnv);
+      console.log("ENV:", formDataEnv.get("env"));
+      envChosen = formDataEnv.get("env");
+    });
+
+    let IP = "";
+    if (envChosen === "local") {
+      IP = "http://127.0.0.1:3000";
+    } else {
+      IP = "http://159.65.114.218:3000";
+    }
+
+    const socket = io(IP);
     socket.on("lifeBeat", (data) => {
       console.log(data);
     });
