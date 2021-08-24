@@ -14,16 +14,16 @@ Below are steps to be taken to get you all setup
    HOST=0.0.0.0
    PORT=1337
 
-    # DB
-  DATABASE_HOST={}
-  DATABASE_SRV={}  
-  DATABASE_PORT={}
-  DATABASE_NAME="test-strapi"
-  DATABASE_USERNAME={}
-  DATABASE_PASSWORD={}
-  AUTHENTICATION_DATABASE={}
-  DATABASE_SSL={}
-  Note, the parts showing "{}* is to be filled with your DB details
+### DB
+  DATABASE_HOST={} <br>
+  DATABASE_SRV={}  <br>
+  DATABASE_PORT={} <br>
+  DATABASE_NAME="test-strapi" <br>
+  DATABASE_USERNAME={} <br>
+  DATABASE_PASSWORD={} <br>
+  AUTHENTICATION_DATABASE={} <br>
+  DATABASE_SSL={} <br>
+  Note, the parts showing "{}* is to be filled with your DB details <br><br>
 4. Lastly, you will run the code "npm run develop" to start the service.
 
 
